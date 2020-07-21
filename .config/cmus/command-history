@@ -1,0 +1,9 @@
+q
+update-cache
+add /mnt/SDCard/Musik
+clear 
+refresh
+colorscheme default
+colorscheme night
+add /mnt/SDCard/Musik/
+add /mnt/SDCard/

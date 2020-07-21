@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/dennis/Wallpaper/man_under_tree_nord.jpg' 

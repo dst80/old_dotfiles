@@ -1,0 +1,7 @@
+[dotfiles]
+repository = ~/dotfiles
+packages = ['config', 'local', 'vim']
+prefix = .
+ignore = [ '.git',
+           '.gitignore',
+           '*.swp']
