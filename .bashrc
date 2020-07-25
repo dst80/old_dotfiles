@@ -1,28 +1,12 @@
-#
-# ~/.bashrc
-#
+ #If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # gtest option
 export GTEST_COLOR=1
 
-
-
- #If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-
 # to set xfce-terminal use of xresources
 if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" == "xfce4-terminal" ]; then
 	    export TERM=xterm-256color
-fi
-
-if [ -f `which powerline-daemon` ]; then
-	powerline-daemon -q
-	POWERLINE_BASH_CONTINUATION=1
-	POWERLINE_BASH_SELECT=1
-	. /usr/share/powerline/bindings/bash/powerline.sh
 fi
 
 if [ -f /usr/share/fzf/key-bindings.bash ] && [ -f /usr/share/fzf/completion.bash ]; then
@@ -30,3 +14,8 @@ if [ -f /usr/share/fzf/key-bindings.bash ] && [ -f /usr/share/fzf/completion.bas
    source /usr/share/fzf/completion.bash
 fi
 
+alias ls='ls --color=auto'
+alias ll='ls -all'
+
+
+PS1='\[\e[1;104;37m\] \u\[\e[1;40;34m\]\[\e[1;40;37m\] \w\[\e[0;49;30m\]\[\e[m\]\] '

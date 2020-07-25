@@ -146,8 +146,8 @@ nmap <silent> <leader>f :Files<CR>
 nmap <silent> <C-P> :GFiles<CR>
 
 "FuGITive
-nmap <leader>ga :G add .<CR>
-nmap <leader>gc :G commit<CR>
+nmap <leader>gs :G<CR>
+nmap <leader>gc :Gcommit<CR>
 nmap <leader>gds :Gdiffsplit<CR>
 
 

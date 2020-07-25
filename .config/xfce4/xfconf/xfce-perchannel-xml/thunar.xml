@@ -9,13 +9,13 @@
   <property name="last-window-maximized" type="bool" value="false"/>
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
-  <property name="last-details-view-column-widths" type="string" value="50,159,50,50,224,50,50,76,50,435"/>
+  <property name="last-details-view-column-widths" type="string" value="50,159,50,50,172,50,50,76,50,392"/>
   <property name="tree-icon-emblems" type="bool" value="true"/>
   <property name="misc-text-beside-icons" type="bool" value="true"/>
   <property name="misc-middle-click-in-tab" type="bool" value="true"/>
   <property name="last-side-pane" type="string" value="ThunarTreePane"/>
-  <property name="last-window-width" type="int" value="720"/>
-  <property name="last-window-height" type="int" value="512"/>
+  <property name="last-window-width" type="int" value="431"/>
+  <property name="last-window-height" type="int" value="342"/>
   <property name="misc-open-new-window-as-tab" type="bool" value="true"/>
   <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME"/>
   <property name="last-sort-order" type="string" value="GTK_SORT_ASCENDING"/>
