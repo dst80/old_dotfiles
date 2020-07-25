@@ -1,1 +1,5 @@
-cache
+*autosave*
+*cache*
+*history*
+*.pl
+playlists/
