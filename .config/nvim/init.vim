@@ -124,10 +124,10 @@ nnoremap <C-u> :w<CR>
 let mapleader = " "
 
 " Switch between windows
-nnoremap <leader>j :wincmd j <CR>
-nnoremap <leader>k :wincmd k <CR>
-nnoremap <leader>l :wincmd l <CR>
-nnoremap <leader>h :wincmd h <CR>
+nnoremap <silent> <leader>j :wincmd j <CR>
+nnoremap <silent> <leader>k :wincmd k <CR>
+nnoremap <silent> <leader>l :wincmd l <CR>
+nnoremap <silent> <leader>h :wincmd h <CR>
 
 nmap <silent> <leader>d  :call ToggleVExplore()<CR>
 nmap <silent> <leader>u  :call UndoTreeShow<CR>
@@ -137,7 +137,7 @@ nmap <silent> <leader>gr :YcmCompleter GoToReferences<CR>
 
 nmap <silent> <leader>fs :YcmCompleter GotoSymbols<CR>
 nmap <silent> <leader>fi :YcmCompleter FixIt<CR>
-nmap          <leader>rr :YcmCompleter RefactorName
+nmap <leader>rr :YcmCompleter RefactorName
 nmap <silent> <leader>t  :YcmCompleter GetType<CR>
 nmap <silent> <leader>doc :YcmCompleter GetDoc<CR>
 nmap <silent> <leader>rf :YcmCompleter Format<CR>
