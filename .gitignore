@@ -3,3 +3,7 @@
 *history*
 *.pl
 playlists/
+plugged/
+undodir/
+.histfile
+.zcompdump
