@@ -40,7 +40,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 filetype plugin indent on
-
+let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = "/usr/bin/clangd"
 
 colorscheme nord
@@ -137,7 +137,7 @@ nmap <silent> <leader>gr :YcmCompleter GoToReferences<CR>
 
 nmap <silent> <leader>fs :YcmCompleter GotoSymbols<CR>
 nmap <silent> <leader>fi :YcmCompleter FixIt<CR>
-nmap <leader>rr :YcmCompleter RefactorName
+nmap <leader>rr :YcmCompleter RefactorRename
 nmap <silent> <leader>t  :YcmCompleter GetType<CR>
 nmap <silent> <leader>doc :YcmCompleter GetDoc<CR>
 nmap <silent> <leader>rf :YcmCompleter Format<CR>
