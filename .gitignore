@@ -7,3 +7,10 @@ plugged/
 undodir/
 .histfile
 .zcompdump
+trizen/
+pulse/
+inkscape/
+htop/
+BraveSoftware/
+configstore/
+polybar/
