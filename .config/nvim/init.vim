@@ -26,6 +26,7 @@ set shortmess+=c
 set cursorline
 set colorcolumn=120
 set modelines=0
+set completeopt-=preview
 
 filetype off
 call plug#begin()
