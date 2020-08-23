@@ -1,5 +1,4 @@
 set nocompatible
-syntax on
 
 set relativenumber
 set hidden
@@ -12,13 +11,10 @@ set nu
 set nowrap
 set noswapfile
 set nobackup
-set undodir=~/.config/nvim/undodir
+"set undodir=~/.config/nvim/undodir
 set undofile
-set incsearch
-set nohlsearch
 set smartcase
 set noshowmode
-set scrolloff=8
 
 set cmdheight=2
 set updatetime=50
@@ -26,7 +22,7 @@ set shortmess+=c
 set cursorline
 set colorcolumn=120
 set modelines=0
-set completeopt-=preview
+set completeopt=longest,menuone
 
 filetype off
 call plug#begin()
@@ -34,15 +30,18 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf.vim'
-call plug#end()
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-filetype plugin indent on
-let g:ycm_clangd_uses_ycmd_caching = 0
-let g:ycm_clangd_binary_path = "/usr/bin/clangd"
+call plug#end()
 
 colorscheme nord
 let g:nord_cursor_line_number_background = 1
@@ -76,6 +75,22 @@ let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
+au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'allowlist': ['c', 'cpp'],
+        \ })
+
+
+let g:lsp_signs_error = {'text': '✖️'}
+let g:lsp_signs_warning = {'text': '⚠️'}
+let g:lsp_signs_hint = {'text': '〰️'} 
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1 
+let g:lsp_textprop_enabled = 0
+let g:lsp_virtual_text_enabled = 0
+
+
 
 " FUNCTION DEFINITIONS
 " ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -83,8 +98,6 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-let g:coc_snippet_next = '<tab>'
 
 function! ToggleVExplore()
     if exists("t:expl_buf_num")
@@ -110,17 +123,6 @@ map <F2> <C-O>:set invpaste paste?<CR>
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
-" Fixes common backspace problems
-set backspace=indent,eol,start
-
-" Map the <Space> key to toggle a selected fold opened/closed.
-" nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-" vnoremap <Space> zf
-
-" Easy saving
-inoremap <C-u> <ESC>:w<CR>
-nnoremap <C-u> :w<CR>
-
 " Editing vimrc
 let mapleader = " "
 
@@ -132,16 +134,31 @@ nnoremap <silent> <leader>h :wincmd h <CR>
 
 nmap <silent> <leader>d  :call ToggleVExplore()<CR>
 nmap <silent> <leader>u  :call UndoTreeShow<CR>
-nmap <silent> <leader>gd :YcmCompleter GoTo<CR>
-nmap <silent> <leader>gi :YcmCompleter GoToImplementation<CR>
-nmap <silent> <leader>gr :YcmCompleter GoToReferences<CR>
 
-nmap <silent> <leader>fs :YcmCompleter GotoSymbols<CR>
-nmap <silent> <leader>fi :YcmCompleter FixIt<CR>
-nmap <leader>rr :YcmCompleter RefactorRename
-nmap <silent> <leader>t  :YcmCompleter GetType<CR>
-nmap <silent> <leader>doc :YcmCompleter GetDoc<CR>
-nmap <silent> <leader>rf :YcmCompleter Format<CR>
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> <leader>fi <plug>(lsp-code-action)
+    vmap <buffer> <leader>rf <plug>(lsp-document-range-format)
+    nmap <buffer> <leader>rf <plag>(lsp-document-format)
+    nmap <buffer> <leader>gd <plug>(lsp-definition)
+    nmap <buffer> <leader>gr <plug>(lsp-references)
+    nmap <buffer> <leader>gi <plug>(lsp-implementation)
+    nmap <buffer> <leader>gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rr <plug>(lsp-rename)
+    nmap <buffer> <leader>ek <plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>ej <plug>(lsp-next-diagnostic)
+    nmap <buffer> <leader>h  <plug>(lsp-hover)
+    nmap <buffer> <leader>fa <plug>(lsp-workspace-symbol)    
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 nmap <silent> <leader>f :Files<CR>
 nmap <silent> <C-P> :GFiles<CR>
@@ -151,6 +168,9 @@ nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gds :Gdiffsplit<CR>
 
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 function! TrimWhitespace()
     let l:winview = winsaveview()
