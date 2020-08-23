@@ -15,3 +15,5 @@ BraveSoftware/
 configstore/
 polybar/
 Code - OSS/
+.config/Electron
+.config/nvim/.netrwhist
