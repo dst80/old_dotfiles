@@ -1,0 +1,28 @@
+" fundamental settings
+syntax on
+set relativenumber
+set number
+set cursorline
+set noerrorbells
+set updatetime=50
+set noshowmode
+set nocompatible
+
+" cursor settings
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode
+
+" temp file
+set nobackup
+set noswapfile
+set undofile
+
+" seaching setting
+set incsearch
+set hlsearch
+set smartcase
+set path+=**
+
+" backspace
+set backspace=eol,indent,start
