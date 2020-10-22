@@ -1,5 +1,5 @@
-export EDITOR=/bin/nvim
-export VISUAL=/bin/nvim
+export EDITOR=/bin/vim
+export VISUAL=/bin/vim
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -27,5 +27,3 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias ls="ls --color=auto"
 alias ll="ls -l"
 alias la="ls -all"
-alias vim="nvim"
-alias v="vim"
