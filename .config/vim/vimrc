@@ -51,6 +51,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
 
+  " Git plugin
+  Plug 'tpope/vim-fugitive'
+
+
+
   " Language server protocol'  
   Plug 'prabirshrestha/vim-lsp'  
   Plug 'prabirshrestha/asyncomplete.vim'
@@ -92,8 +97,8 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <leader>gi <plug>(lsp-implementation)
   nmap <buffer> <leader>gt <plug>(lsp-type-definition)
   nmap <buffer> <leader>rn <plug>(lsp-rename)
-  nmap <buffer> <leader>gj <Plug>(lsp-previous-diagnostic)
-  nmap <buffer> <leader>gk <Plug>(lsp-next-diagnostic)
+  nmap <buffer> <leader>pd <Plug>(lsp-previous-diagnostic)
+  nmap <buffer> <leader>nd <Plug>(lsp-next-diagnostic)
   nmap <buffer> <leader>h <Plug>(lsp-hover)
 endfunction
 
@@ -114,3 +119,9 @@ let g:lsp_virtual_text_enabled = 0
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+"FuGITive
+nmap <leader>gs :G<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gds :Gdiffsplit<CR>
+
