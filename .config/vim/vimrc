@@ -122,9 +122,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 "FuGITive
-nmap <leader>gs :G<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gds :Gdiffsplit<CR>
+nmap <silent> <leader>gs :G<CR>
+nmap <silent> <leader>gc :Gcommit<CR>
+nmap <silent> <leader>gds :Gdiffsplit<CR>
 
 " fzf
 command! -bang -nargs=* GRg
