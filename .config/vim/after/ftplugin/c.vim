@@ -10,3 +10,4 @@ au User lsp_setup call lsp#register_server({
   \ 'allowlist': ['c', 'cpp'],
   \ 'blocklist': [],
   \ })
+

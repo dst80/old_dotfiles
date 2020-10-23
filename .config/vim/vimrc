@@ -106,3 +106,7 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_textprop_enabled = 0
 let g:lsp_virtual_text_enabled = 0
 
+" completion settings
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
