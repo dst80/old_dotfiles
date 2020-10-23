@@ -54,7 +54,8 @@ call plug#begin('~/.vim/plugged')
   " Git plugin
   Plug 'tpope/vim-fugitive'
 
-
+  " CMake
+  Plug 'cdelledonne/vim-cmake'
 
   " Language server protocol'  
   Plug 'prabirshrestha/vim-lsp'  
@@ -97,9 +98,9 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <leader>gi <plug>(lsp-implementation)
   nmap <buffer> <leader>gt <plug>(lsp-type-definition)
   nmap <buffer> <leader>rn <plug>(lsp-rename)
-  nmap <buffer> <leader>pd <Plug>(lsp-previous-diagnostic)
-  nmap <buffer> <leader>nd <Plug>(lsp-next-diagnostic)
-  nmap <buffer> <leader>h <Plug>(lsp-hover)
+  nmap <buffer> <leader>pd <plug>(lsp-previous-diagnostic)
+  nmap <buffer> <leader>nd <plug>(lsp-next-diagnostic)
+  nmap <buffer> <leader>h <plug>(lsp-hover)
 endfunction
 
 augroup lsp_install
