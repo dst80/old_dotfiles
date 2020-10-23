@@ -8,7 +8,7 @@ set updatetime=50
 set noshowmode
 set nocompatible
 set shortmess+=c
-let leader = " "
+let mapleader = " "
 
 " cursor settings
 let &t_SI.="\e[5 q" "SI = INSERT mode
@@ -52,11 +52,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
 
-  " Git plugin
   Plug 'tpope/vim-fugitive'
 
-  " CMake
   Plug 'cdelledonne/vim-cmake'
+
+  Plug 'junegunn/fzf.vim'
 
   " Language server protocol'  
   Plug 'prabirshrestha/vim-lsp'  
@@ -125,4 +125,14 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gds :Gdiffsplit<CR>
-i
+
+" fzf
+command! -bang -nargs=* GRg
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+nmap <silent> <leader>ff  :Files<CR>
+nmap <silent> <leader>fg  :GFiles<CR>
+nmap <silent> <leader>grg :GRg<CR>
+nmap <silent> <leader>rg  :Rg<CR>
