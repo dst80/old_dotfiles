@@ -24,7 +24,7 @@ set undofile
 set incsearch
 set hlsearch
 set smartcase
-set path+=**
+setglobal path=.,,
 
 " backspace
 set backspace=eol,indent,start
@@ -39,6 +39,7 @@ set smartindent
 " default GUI behavior
 set nowrap
 set modelines=0
+
 
 " plugins
 call plug#begin('~/.vim/plugged')
@@ -80,7 +81,6 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.crypto = ''
 let g:airline_symbols.dirty='⚡'
 let g:airline_section_z ='%#__accent_bold#%l/%L:%v%#__restore__#'
-
 
 " Language Server protocol
 function! s:on_lsp_buffer_enabled() abort
@@ -125,4 +125,4 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gds :Gdiffsplit<CR>
-
+i
