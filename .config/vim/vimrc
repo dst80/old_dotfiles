@@ -58,6 +58,8 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'junegunn/fzf.vim'
 
+  Plug 'jiangmiao/auto-pairs'
+
   " Language server protocol'  
   Plug 'prabirshrestha/vim-lsp'  
   Plug 'prabirshrestha/asyncomplete.vim'
