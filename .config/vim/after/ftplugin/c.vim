@@ -5,3 +5,4 @@ set shiftwidth=4
 setlocal path+=/usr/include include&
 setlocal commentstring=//\ %s
 
+autocmd BufWritePre * %s/\s\+$//e
