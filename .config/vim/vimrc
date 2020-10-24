@@ -85,6 +85,19 @@ let g:airline_symbols.dirty='⚡'
 let g:airline_section_z ='%#__accent_bold#%l/%L:%v%#__restore__#'
 
 " Language Server protocol
+" LSP settings for clangd
+au User lsp_setup call lsp#register_server({
+  \ 'name': 'clangd',
+  \ 'cmd': {server_info->['clangd']},
+  \ 'allowlist': ['c', 'cpp'],
+  \ 'blocklist': [],
+  \ })
+
+
+
+
+
+
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
@@ -138,3 +151,9 @@ nmap <silent> <leader>ff  :Files<CR>
 nmap <silent> <leader>fg  :GFiles<CR>
 nmap <silent> <leader>grg :GRg<CR>
 nmap <silent> <leader>rg  :Rg<CR>
+
+
+"Resource files
+autocmd BufRead,BufNewFile  *.cpp  set filetype=cpp
+autocmd BufRead,BufNewFile  *.c  set filetype=c
+
