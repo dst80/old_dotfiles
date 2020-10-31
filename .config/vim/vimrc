@@ -141,6 +141,9 @@ nmap <silent> <leader>gs :G<CR>
 nmap <silent> <leader>gc :Gcommit<CR>
 nmap <silent> <leader>gds :Gdiffsplit<CR>
 
+" fast change to select current file path as working directory
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
 " fzf
 command! -bang -nargs=* GRg
   \ call fzf#vim#grep(
