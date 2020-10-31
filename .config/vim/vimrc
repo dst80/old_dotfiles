@@ -94,10 +94,6 @@ au User lsp_setup call lsp#register_server({
   \ })
 
 
-
-
-
-
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
