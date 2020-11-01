@@ -164,7 +164,10 @@ nmap <silent> <leader>grg :GRg<CR>
 nmap <silent> <leader>rg  :Rg<CR>
 
 
-"Resource files
+"vifm
+nmap <silent> <leader>fe :EditVifm <CR>
+
+"Resource file
 autocmd BufRead,BufNewFile  *.cpp  set filetype=cpp
 autocmd BufRead,BufNewFile  *.c  set filetype=c
 
