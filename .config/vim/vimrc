@@ -55,7 +55,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'cdelledonne/vim-cmake'
 
   Plug 'junegunn/fzf.vim'
-
+  Plug 'vifm/vifm.vim'
   Plug 'jiangmiao/auto-pairs'
 
   " Language server protocol'  
